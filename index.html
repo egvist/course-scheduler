@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TU Dresden Ms Computer Science Scheduler</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="university-name">TU Dresden</div>
+                <h1>Course Scheduler</h1>
+                <div class="program-name">Master Computer Science</div>
+                <div class="academic-year">Winter Semester 2025/26</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <h3>Available Courses</h3>
+                </div>
+                <div class="sidebar-search">
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search for courses...">
+                    </div>
+                </div>
+                <div class="specialization-filters">
+                    <div class="filter-header" onclick="toggleFilters()">
+                        <h4>Filter by Specialization</h4>
+                        <span class="toggle-icon" id="toggleIcon">▼</span>
+                    </div>
+                    <div class="filter-content" id="filterContent">
+                        <div class="filter-controls">
+                            <button class="filter-btn select-all-btn" onclick="selectAllFilters()">Select All</button>
+                            <button class="filter-btn deselect-all-btn" onclick="deselectAllFilters()">Deselect All</button>
+                        </div>
+                        <div class="filter-checkboxes">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-theory" value="theory" checked>
+                                <span class="checkmark"></span>
+                                Theoretical CS & AI
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-software" value="software" checked>
+                                <span class="checkmark"></span>
+                                Software Technology
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-secure" value="secure" checked>
+                                <span class="checkmark"></span>
+                                Secure Computing
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-systems" value="systems" checked>
+                                <span class="checkmark"></span>
+                                Systems Architecture
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-cyber" value="cyber" checked>
+                                <span class="checkmark"></span>
+                                Cyber-Physical Systems
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-visual" value="visual" checked>
+                                <span class="checkmark"></span>
+                                Visual Computing & ML
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-hci" value="hci" checked>
+                                <span class="checkmark"></span>
+                                Human-Computer Interaction
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-engineering" value="engineering" checked>
+                                <span class="checkmark"></span>
+                                Computer Engineering
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-language" value="language" checked>
+                                <span class="checkmark"></span>
+                                Language Courses
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="language-filters">
+                    <div class="filter-header" onclick="toggleLanguageFilters()">
+                        <h4>Filter by Language</h4>
+                        <span class="toggle-icon" id="languageToggleIcon">▼</span>
+                    </div>
+                    <div class="filter-content" id="languageFilterContent">
+                        <div class="filter-controls">
+                            <button class="filter-btn select-all-btn" onclick="selectAllLanguageFilters()">Select All</button>
+                            <button class="filter-btn deselect-all-btn" onclick="deselectAllLanguageFilters()">Deselect All</button>
+                        </div>
+                        <div class="filter-checkboxes">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-english" value="english" checked>
+                                <span class="checkmark"></span>
+                                English
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-german" value="german" checked>
+                                <span class="checkmark"></span>
+                                German
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filter-mixed" value="german/english" checked>
+                                <span class="checkmark"></span>
+                                German/English
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-list-container" id="courseListContainer">
+                    <!-- Course list will be generated by JavaScript -->
+            </div>
+        </div>
+
+            <div class="content-area">
+        <div class="schedule-section">
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                    </tr>
+                </thead>
+                <tbody id="scheduleTableBody">
+                    <!-- Time slots will be generated by JavaScript -->
+                </tbody>
+            </table>
+
+                    <div class="selected-courses">
+                        <h3>Selected Courses</h3>
+                        <div id="selectedCourseList" class="selected-course-list">
+                            <!-- Selected courses will be displayed here -->
+                        </div>
+                        <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+                            <button id="exportPdfBtn" class="export-pdf-btn" onclick="exportScheduleToPDF()" style="display: none;">
+                                📄 Export Schedule as PDF
+                            </button>
+                            <button id="clearAllCourses" class="clear-all-btn" onclick="clearAllCourses()" style="display: none;">
+                                Clear All Courses
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer with GitHub link -->
+        <div class="footer">
+            <p>Created by <a href="https://github.com/egvist" target="_blank" rel="noopener noreferrer">egvist</a></p>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
