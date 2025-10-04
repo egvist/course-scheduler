@@ -1,6 +1,6 @@
 # TU Dresden Course Scheduler
 
-A simple web app for planning and managing Master’s Computer Science courses at TU Dresden. I built it because scheduling was way too confusing. It could work even better with a database to store course details, and it can easily be adapted for other university programs. Right now, it’s more of a prototype for future development.
+A simple web app for planning and managing Master’s Computer Science courses at TU Dresden. I built it because scheduling was way too confusing. It could work even better with a database to store course details, and it can easily be adapted for other university programs. **Right now, it’s more of a prototype for future development.**
 
 
 ### Note: Hardcoded Data
