@@ -1,4 +1,3 @@
-// Course data structure
 const courseData = [
     // Theoretical Computer Science and Symbolic Artificial Intelligence
     {
